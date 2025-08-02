@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundo Dinâmico com Texto Centralizado</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            cursor: pointer;
+        }
+
+        .texto-centralizado {
+            text-align: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            z-index: 10;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 0.5em;
+        }
+
+        p {
+            font-size: 1.5em;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Efeito de movimento ao clicar */
+        body:active {
+            animation: clickEffect 0.5s ease;
+        }
+
+        @keyframes clickEffect {
+            0% { background-size: 400% 400%; }
+            50% { background-size: 500% 500%; }
+            100% { background-size: 400% 400%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="texto-centralizado">
+        <h1>Olá, Mundo!</h1>
+        <p>Clique em qualquer lugar para ver o fundo se mover!</p>
+    </div>
+
+    <script>
+        // Efeito de movimento mais dinâmico ao clicar
+        document.body.addEventListener('click', function(e) {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            document.body.style.backgroundPosition = `${x * 100}% ${y * 100}%`;
+        });
+    </script>
+</body>
+</html>
